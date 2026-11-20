@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chef - Recetas Dulces</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="contenedor-app">
+    <!-- Zona de respuesta: historial de mensajes del chat -->
+    <section id="zona-de-respuesta" class="zona-de-respuesta" aria-live="polite">
+      <div class="mensaje mensaje-agente">
+        <span class="autor">Chef 🧁</span>
+        <p class="texto-mensaje">¡Hola! Soy Chef. Contame qué ingredientes tenés en tu cocina y te recomiendo una receta dulce deliciosa.</p>
+      </div>
+    </section>
+
+    <!-- Zona de escritura: entrada de ingredientes y botón de envío -->
+    <form id="zona-de-escritura" class="zona-de-escritura">
+      <textarea 
+        id="entrada-mensaje" 
+        class="entrada-mensaje" 
+        placeholder="Ej: Tengo harina, huevos, azúcar, dulce de leche y bananas..." 
+        maxlength="500" 
+        rows="3" 
+        required
+        aria-label="Escribí los ingredientes que tenés"
+      ></textarea>
+      <div class="barra-acciones">
+        <span id="contador-caracteres" class="contador-caracteres">0 / 500</span>
+        <button type="submit" id="boton-enviar" class="boton-enviar">Pedir receta 🍰</button>
+      </div>
+    </form>
+  </main>
+
+  <!-- Carga estricta: config.js antes que script.js -->
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
