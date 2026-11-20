@@ -1,0 +1,228 @@
+/* Variables de colores divertidos y pastelería */
+:root {
+  --fondo-general: #fff5f7;
+  --fondo-tarjeta: #ffffff;
+  --primario: #ff5d8f;
+  --primario-oscuro: #e04575;
+  --secundario: #ffbe0b;
+  --acento-menta: #06d6a0;
+  --burbuja-agente: #fff0f5;
+  --burbuja-usuario: #ffe5ec;
+  --burbuja-error: #ffe3e3;
+  --texto-principal: #2b2d42;
+  --texto-suave: #6c757d;
+  --borde-suave: #ffc2d1;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #fff5f7 0%, #fef9ef 100%);
+  color: var(--texto-principal);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+/* Estructura principal fiel a la disposición del boceto */
+.contenedor-app {
+  width: 100%;
+  max-width: 680px;
+  height: 90vh;
+  max-height: 820px;
+  background-color: var(--fondo-tarjeta);
+  border: 3px solid var(--borde-suave);
+  border-radius: 24px;
+  box-shadow: 0 12px 30px rgba(255, 93, 143, 0.15);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 16px;
+}
+
+/* Zona superior: zona de respuesta */
+.zona-de-respuesta {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 10px;
+  scroll-behavior: smooth;
+}
+
+/* Burbujas de chat */
+.mensaje {
+  max-width: 82%;
+  padding: 14px 18px;
+  border-radius: 20px;
+  line-height: 1.5;
+  font-size: 0.98rem;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  animation: aparecer 0.25s ease-out;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mensaje-agente {
+  align-self: flex-start;
+  background-color: var(--burbuja-agente);
+  border: 2px solid var(--borde-suave);
+  border-bottom-left-radius: 6px;
+}
+
+.mensaje-usuario {
+  align-self: flex-end;
+  background-color: var(--primario);
+  color: #ffffff;
+  border-bottom-right-radius: 6px;
+}
+
+.mensaje-error {
+  align-self: flex-start;
+  background-color: var(--burbuja-error);
+  border: 2px solid #ff8787;
+  color: #c92a2a;
+  border-bottom-left-radius: 6px;
+}
+
+.mensaje-cargando {
+  align-self: flex-start;
+  background-color: #fff9db;
+  border: 2px dashed var(--secundario);
+  color: #8f6b00;
+  font-style: italic;
+}
+
+.autor {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mensaje-usuario .autor {
+  color: #ffe5ec;
+  text-align: right;
+}
+
+.mensaje-agente .autor {
+  color: var(--primario);
+}
+
+/* Zona inferior centrada: zona de escritura */
+.zona-de-escritura {
+  width: 88%;
+  margin: 0 auto;
+  background-color: #fffafb;
+  border: 3px solid var(--acento-menta);
+  border-radius: 20px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 6px 16px rgba(6, 214, 160, 0.12);
+}
+
+.entrada-mensaje {
+  width: 100%;
+  border: none;
+  background: transparent;
+  resize: none;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--texto-principal);
+  outline: none;
+}
+
+.entrada-mensaje::placeholder {
+  color: #9aa0a6;
+}
+
+.entrada-mensaje:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.barra-acciones {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #e9ecef;
+  padding-top: 8px;
+}
+
+.contador-caracteres {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--texto-suave);
+}
+
+.boton-enviar {
+  background-color: var(--primario);
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+.boton-enviar:hover:not(:disabled) {
+  background-color: var(--primario-oscuro);
+  transform: translateY(-2px);
+}
+
+.boton-enviar:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.boton-enviar:disabled {
+  background-color: #ced4da;
+  cursor: not-allowed;
+}
+
+/* Responsividad para celulares */
+@media (max-width: 600px) {
+  body {
+    padding: 8px;
+  }
+
+  .contenedor-app {
+    height: 95vh;
+    padding: 12px;
+    border-radius: 18px;
+  }
+
+  .zona-de-escritura {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .mensaje {
+    max-width: 90%;
+    font-size: 0.94rem;
+  }
+}
